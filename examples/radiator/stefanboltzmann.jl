@@ -47,9 +47,9 @@ function init()
     
     results = DataFrame(K = Int[], W = Float64[])
     
-	data = Parameters(2, 0.9, 250)
+	data = Parameters(args["set-area"], args["set-emissivity"], args["set-temperature"])
 
-    for t in 250:50:800
+    for t in args["set-start"]:args["set-step"]:args["set-stop"]
 		data.temperature_init = t
         power = stefan_boltzmann(data.area, data.emissivity, data.temperature_init)
 		push!(results, (K = data.temperature_init, W = power))

@@ -50,6 +50,10 @@ module Utils
             "--set-emissivity"
 				help = ""
             	arg_type = Real
+
+            "--set-temperature"
+            	help = ""
+            	arg_type = Real
     	end
 
     	return parse_args(s)
