@@ -34,26 +34,32 @@ module Utils
             "--set-start"
 				help = "" 
             	arg_type = Real
+            	default = nothing
             
             "--set-step"
 				help = ""
             	arg_type = Real
+            	default = nothing
             
             "--set-stop"
 				help = ""
             	arg_type = Real
+            	default = nothing
             
             "--set-area"
 				help = ""
 				arg_type = Real
+            	default = nothing
             
             "--set-emissivity"
 				help = ""
             	arg_type = Real
+            	default = nothing
 
             "--set-temperature"
             	help = ""
             	arg_type = Real
+            	default = nothing
     	end
 
     	return parse_args(s)

@@ -62,11 +62,22 @@ module ThermalCalc
 		end
 	end
 
-	function fuel_rod_temperature_difference(thermal_flux::Real, radius::Real, thermal_conduction_coefficient::Real)
-		if(thermal_flux <= 0 || radius <= 0 || thermal_conduction_coefficient <= 0)
+	function volumetric_heat_release_calc()
+    end
+
+	function cylindrical_rod_temperature_difference(volumetric_heat_release::Real, radius::Real, thermal_conduction_coefficient::Real)
+		if(volumetric_heat_release <= 0 || radius <= 0 || thermal_conduction_coefficient <= 0)
 			parameter_error()
         else
-            return (thermal_flux * radius^2) / (4 * thermal_conduction_coefficient) 
+            return (volumetric_heat_release * radius^2) / (4 * thermal_conduction_coefficient) 
+        end
+    end
+
+	function plate_rod_temperature_difference(volumetric_heat_release::Real, half_thickness::Real, thermal_conduction_coefficient::Real)
+	    if(volumetric_heat_release <= 0 || half_thickness <= 0 || thermal_conduction_coefficient <= 0)
+        	parameter_error()
+        else
+            return (volumetric_heat_release * half_thickness^2) / (2*thermal_conduction_coefficient)
         end
     end
 
