@@ -18,6 +18,7 @@ module Utils
     	s = ArgParseSettings()
 
     	@add_arg_table! s begin
+
         	"--output", "-o"
             	help = "Set the path for saving the calculation results"
             	arg_type = String
@@ -32,32 +33,32 @@ module Utils
             	action = :store_true
 
             "--set-start"
-				help = "" 
+				help = "Set the initial value of the variable for the loop" 
             	arg_type = Real
             	default = nothing
             
             "--set-step"
-				help = ""
+				help = "Set the step value for the cycle"
             	arg_type = Real
             	default = nothing
             
             "--set-stop"
-				help = ""
+				help = "Set the endpoint value of the variable for the loop"
             	arg_type = Real
             	default = nothing
             
             "--set-area"
-				help = ""
+				help = "Set area (m^2)"
 				arg_type = Real
             	default = nothing
             
             "--set-emissivity"
-				help = ""
+				help = "Set emissivity (0.1..1)"
             	arg_type = Real
             	default = nothing
 
             "--set-temperature"
-            	help = ""
+            	help = "Set temperature (K)"
             	arg_type = Real
             	default = nothing
     	end

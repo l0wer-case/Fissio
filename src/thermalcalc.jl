@@ -73,11 +73,11 @@ module ThermalCalc
         end
     end
 
-	function plate_rod_temperature_difference(volumetric_heat_release::Real, half_thickness::Real, thermal_conduction_coefficient::Real)
-	    if(volumetric_heat_release <= 0 || half_thickness <= 0 || thermal_conduction_coefficient <= 0)
+	function plate_rod_temperature_difference(volumetric_heat_release::Real, half_thickness::Real, thermal_conductivity::Real)
+	    if(volumetric_heat_release <= 0 || half_thickness <= 0 || thermal_conductivity <= 0)
         	parameter_error()
         else
-            return (volumetric_heat_release * half_thickness^2) / (2*thermal_conduction_coefficient)
+            return (volumetric_heat_release * half_thickness^2) / (2*thermal_conductivity)
         end
     end
 

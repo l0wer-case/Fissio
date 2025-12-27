@@ -44,6 +44,10 @@ end
 function init()
 
     args = parse_commandline()
+
+    if(isnothing(args["set-area"]) || isnothing(args["set-emissivity"]) || isnothing(args["set-temperature"]) || isnothing(args["set-start"]) || isnothing(args["set-step"]) || isnothing(args["set-stop"]))
+		setup_error()
+    end
     
     results = DataFrame(K = Int[], W = Float64[])
     
