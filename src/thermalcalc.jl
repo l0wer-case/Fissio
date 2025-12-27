@@ -26,7 +26,7 @@ module ThermalCalc
 	"""
 	"""
 	function stefan_boltzmann(area::Real, emissivity::Real, temperature_init::Real)
-    	if(area <= 0 || emissivity <= 0)
+    	if(area <= 0 || emissivity <= 0 || emissivity > 1)
 			parameter_error() 
         else 
     		return area * emissivity * STEFAN_BOLTZMANN * temperature_init^4
@@ -47,14 +47,14 @@ module ThermalCalc
 	"""
 	function equilibrium_temperature(use_view_factor_calc::Bool, external_flux_absorption::Real, emissivity::Real, external_flux_power::Real, view_factor::Real, area::Real, external_flux_fraction::Real)
 		if use_view_factor_calc
-            if(area <= 0 || external_flux_absorption <= 0 || emissivity <= 0 || external_flux_power < 0 || external_flux_fraction <= 0)
+            if(area <= 0 || external_flux_absorption <= 0 || emissivity <= 0 || external_flux_power < 0 || external_flux_fraction <= 0 || emissivity > 1)
 				parameter_error()
             else 
 				view_factor_fn = view_factor_calc(area, external_flux_fraction)
 				return Utils.nthroot(((external_flux_absorption / emissivity) * (external_flux_power / STEFAN_BOLTZMANN) * (view_factor_fn / area)), 4)
             end
 		else
-            if(external_flux_absorption <= 0 || emissivity <= 0 || external_flux_power <= 0 || view_factor <= 0 || area <= 0)
+            if(external_flux_absorption <= 0 || emissivity <= 0 || external_flux_power <= 0 || view_factor <= 0 || area <= 0 || emissivity > 1)
 				parameter_error()
             else 
 				return Utils.nthroot(((external_flux_absorption / emissivity) * (external_flux_power / STEFAN_BOLTZMANN) * (view_factor / area)), 4)
