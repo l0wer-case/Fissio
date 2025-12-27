@@ -33,32 +33,32 @@ module Utils
 
             "--set-start"
 				help = "Set the initial value of the variable for the loop" 
-            	arg_type = Real
+            	arg_type = Float64
             	default = nothing
             
             "--set-step"
 				help = "Set the step value for the cycle"
-            	arg_type = Real
+            	arg_type = Float64
             	default = nothing
             
             "--set-stop"
 				help = "Set the endpoint value of the variable for the loop"
-            	arg_type = Real
+            	arg_type = Float64
             	default = nothing
             
             "--set-area"
 				help = "Set area (m^2)"
-				arg_type = Real
+				arg_type = Float64
             	default = nothing
             
             "--set-emissivity"
 				help = "Set emissivity (0.1..1)"
-            	arg_type = Real
+            	arg_type = Float64
             	default = nothing
 
             "--set-temperature"
             	help = "Set temperature (K)"
-            	arg_type = Real
+            	arg_type = Float64
             	default = nothing
     	end
 
