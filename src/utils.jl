@@ -8,7 +8,7 @@ module Utils
 	using ArgParse
 
 	export DEFAULT_OUTPUT, parse_commandline
-	export parameter_error
+	export parameter_error, setup_error
 	export nthroot
 
 	const DEFAULT_OUTPUT = "./output"
