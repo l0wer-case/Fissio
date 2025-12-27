@@ -1,6 +1,5 @@
 # -------------------------------
 # File: coolantcalc.jl
-# Project: Reactor Sandbox
 # Created: 2025-12-18 
 # -------------------------------
 

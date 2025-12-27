@@ -1,6 +1,5 @@
 # -------------------------------
 # File: utils.jl
-# Project: Reactor Sandbox
 # Created: 2025-11-16
 # -------------------------------
 
@@ -67,7 +66,7 @@ module Utils
 	end
 
 	parameter_error() = throw(ArgumentError("Parameters are within an unacceptable range"))
-	setup_error() = throw(ArgumentError("Initial parameters are within an unacceptable range"))
+	setup_error() = throw(ArgumentError("Initial parameters are not initialized"))
     
     function nthroot(x::Real, n::Integer)
     	if x >= 0

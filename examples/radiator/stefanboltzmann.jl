@@ -1,6 +1,5 @@
 # -------------------------------
 # File: stefanboltzmann.jl
-# Project: Reactor Sandbox
 # Created: 2025-12-18
 # -------------------------------
 
@@ -49,7 +48,7 @@ function init()
 		setup_error()
     end
     
-    results = DataFrame(K = Int[], W = Float64[])
+    results = DataFrame(K = Float64[], W = Float64[])
     
 	data = Parameters(args["set-area"], args["set-emissivity"], args["set-temperature"])
 
