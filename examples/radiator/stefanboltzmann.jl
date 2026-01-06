@@ -5,7 +5,7 @@
 
 ENV["JULIA_PYTHONCALL_EXE"] = "/usr/bin/python3"
 
-using PythonCall, ArgParse, CSV, DataFrames
+using PythonCall, CSV, DataFrames
 
 include("../../src/utils.jl")
 include("../../src/thermalcalc.jl")
@@ -43,22 +43,18 @@ end
 function init()
 
     args = parse_commandline()
-
-    if(isnothing(args["set-area"]) || isnothing(args["set-emissivity"]) || isnothing(args["set-temperature"]) || isnothing(args["set-start"]) || isnothing(args["set-step"]) || isnothing(args["set-stop"]))
-		setup_error()
-    end
     
     results = DataFrame(K = Float64[], W = Float64[])
     
-	data = Parameters(args["set-area"], args["set-emissivity"], args["set-temperature"])
+	data = Parameters(2, 0.9, 250)
 
-    for t in args["set-start"]:args["set-step"]:args["set-stop"]
+    for t in 250:25:800
 		data.temperature_init = t
         power = stefan_boltzmann(data.area, data.emissivity, data.temperature_init)
 		push!(results, (K = data.temperature_init, W = power))
 
         if args["realtime-output"]
-			println(">>> T = $t K | Power = $(round(power, digits=2)) W")
+			println(" T = $t (K) | Power = $(round(power, digits=2)) (W)")
         end
     end
 
@@ -66,7 +62,7 @@ function init()
     CSV.write(output_path, results)
     println("Results saved to $output_path")
 
-	if args["build-graph"]
+	if args["build-plot"]
         build_plot(results)
     end
     

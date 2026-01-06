@@ -8,7 +8,7 @@ module Utils
 	using ArgParse
 
 	export DEFAULT_OUTPUT, parse_commandline
-	export parameter_error, setup_error
+	export parameter_error
 	export nthroot
 
 	const DEFAULT_OUTPUT = "./output"
@@ -27,46 +27,15 @@ module Utils
             	help = "Display program execution results in the command line in real time"
             	action = :store_true 
             
-        	"--build-graph", "-g"
+        	"--build-plot", "-g"
             	help = "Render plot using Matplotlib (may not be available in some programs)"
             	action = :store_true
-
-            "--set-start"
-				help = "Set the initial value of the variable for the loop" 
-            	arg_type = Real
-            	default = nothing
-            
-            "--set-step"
-				help = "Set the step value for the cycle"
-            	arg_type = Real
-            	default = nothing
-            
-            "--set-stop"
-				help = "Set the endpoint value of the variable for the loop"
-            	arg_type = Real
-            	default = nothing
-            
-            "--set-area"
-				help = "Set area (m^2)"
-				arg_type = Real
-            	default = nothing
-            
-            "--set-emissivity"
-				help = "Set emissivity (0.1..1)"
-            	arg_type = Real
-            	default = nothing
-
-            "--set-temperature"
-            	help = "Set temperature (K)"
-            	arg_type = Real
-            	default = nothing
     	end
 
     	return parse_args(s)
 	end
 
 	parameter_error() = throw(ArgumentError("Parameters are within an unacceptable range"))
-	setup_error() = throw(ArgumentError("Initial parameters are not initialized"))
     
     function nthroot(x::Real, n::Integer)
     	if x >= 0
